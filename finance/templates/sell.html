@@ -1,0 +1,9 @@
+<form action="/sell" method="post">
+    <select name="symbol">
+        {% for stock in stocks %}
+        <option value="{{ stock.symbol }}">{{ stock.symbol }}</option>
+        {% endfor %}
+    </select>
+    <input type="number" name="shares" placeholder="Shares">
+    <button type="submit">Sell</button>
+</form>

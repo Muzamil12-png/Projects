@@ -1,0 +1,11 @@
+sort1 uses: bubble sort
+How do you know?: bubble sort
+bubble sort performed better becasue number were already in the order
+
+sort2 uses: merge sort
+How do you know?: merge sort
+merge sort because it is used when array is not sorted and it is the fatest algorithm to bring it in order
+
+sort3 uses: selection sort
+How do you know?: selection sort
+selection sort because it went through the entire array of the data set to look for the every single point everytime despite the array being in sorted form.

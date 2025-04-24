@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            function checkMultipleChoice(selectedButtonId) {
+                const buttons = document.querySelectorAll('.mcq-button');
+                const correctButtonId = 'mcq-1'; // Correct answer is the first option
+                const feedback = document.getElementById('mcq-feedback');
+
+                buttons.forEach(button => {
+                    button.disabled = true;
+                    button.style.backgroundColor = button.id === selectedButtonId ?
+                        (button.id === correctButtonId ? 'green' : 'red') : '';
+                });
+
+                feedback.textContent = selectedButtonId === correctButtonId ? 'Correct!' : 'Incorrect';
+                feedback.style.color = selectedButtonId === correctButtonId ? 'green' : 'red';
+            }
+
+            function checkFreeResponse() {
+                const input = document.getElementById('fr-input');
+                const feedback = document.getElementById('fr-feedback');
+                const correctAnswer = 'Spices add flavor and excitement to food, and they are an integral part of Pakistani cuisine, reflecting the country\'s cultural diversity.'; // Adjust this answer as needed
+
+                // Convert both the user's input and the correct answer to lowercase for case-insensitive comparison
+                const userAnswer = input.value.trim().toLowerCase();
+                const normalizedCorrectAnswer = correctAnswer.toLowerCase();
+
+                // You can choose to match the entire string or just part of it
+                if (userAnswer.includes(normalizedCorrectAnswer)) {
+                    input.style.backgroundColor = 'green';
+                    feedback.textContent = 'Correct!';
+                    feedback.style.color = 'green';
+                } else {
+                    input.style.backgroundColor = 'red';
+                    feedback.textContent = 'Incorrect';
+                    feedback.style.color = 'red';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <!-- Part 1 -->
+            <div class="section">
+                <h2>Part 1: Multiple Choice</h2>
+                <hr>
+                <h3>What is the full name of FAU Germany?</h3>
+                <button id="mcq-1" class="mcq-button" onclick="checkMultipleChoice('mcq-1')">Friedrich-Alexander-Universität Erlangen-Nürnberg</button>
+                <button id="mcq-2" class="mcq-button" onclick="checkMultipleChoice('mcq-2')">Friedrich-Alexander University</button>
+                <button id="mcq-3" class="mcq-button" onclick="checkMultipleChoice('mcq-3')">Friedrich-Alexander University of Erlangen</button>
+                <button id="mcq-4" class="mcq-button" onclick="checkMultipleChoice('mcq-4')">Friedrich-Alexander-Universität Erlangen-Nürnberg</button>
+                <p id="mcq-feedback"></p>
+            </div>
+
+            <!-- Part 2 -->
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>Why are spices in food liked in Pakistan?</h3>
+                <input type="text" id="fr-input" />
+                <button onclick="checkFreeResponse()">Submit</button>
+                <p id="fr-feedback"></p>
+            </div>
+        </div>
+    </body>
+</html>
